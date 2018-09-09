@@ -7,18 +7,18 @@
 
 CC=gcc
 CFLAGS=-Wall -std=c99
-ABN_LIB_DIR=../lib/abn/bin/
-ABN_LIB_NAME=libabn.a
-ABN_INCLUDE_DIR=../lib/abn/include
+GCBC_LIB_DIR=../../bin/
+GCBC_LIB=lgcbc
+GCBC_INCLUDE_DIR=../../include/
 
 all: ./bin/prog.elf
 
 run: ./bin/prog.elf
-	./bin/example.elf
+	./bin/prog.elf
 
 clean:
 	rm -rf ./bin
 
 ./bin/prog.elf: ./src/prog.c
 	mkdir -p bin/
-	$(CC) $(CFLAGS) $? -I$(ABN_INCLUDE_DIR) -L$(ABN_LIB_DIR) -labn -o $@
+	$(CC) $(CFLAGS) $? -I$(GCBC_INCLUDE_DIR) -L$(GCBC_LIB_DIR) -lgcbc -o $@
